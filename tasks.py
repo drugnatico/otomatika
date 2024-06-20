@@ -73,7 +73,7 @@ class Scraping():
         self.error = None
         options = webdriver.FirefoxOptions()
         options.accept_insecure_certs = True
-        #options.add_argument('-headless')
+        options.add_argument('-headless')
         options.set_preference(
             "browser.download.manager.showAlertOnComplete", False
         )
