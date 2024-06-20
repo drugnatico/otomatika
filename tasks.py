@@ -1,4 +1,5 @@
 from robocorp.tasks import task
+from robocorp import workitems
 from sys import exc_info, argv, _getframe
 from os.path import join as path_join, isdir
 from os import makedirs
@@ -63,7 +64,7 @@ class Scraping():
         self.data = []
         self.count_news = 0
         self.phrase = kwargs.get("phrase")
-        self.section = kwargs.get("section", "Breakingviews")
+        self.section = kwargs.get("section")
         self.months_ago = kwargs.get("months_ago")
         self.datetime_finished = self.datetime_now - relativedelta(
             months = self.months_ago
@@ -691,9 +692,12 @@ class Scraping():
 
 @task
 def minimal_task():
+    item = workitems.inputs.current
+    print("Received payload:", item.payload)
+    payload = workitems.outputs.create(payload={"key": "value"})
     result = Scraping(
-        phrase = "Joe Biden",
-        section = "Business",
-        months_ago = 1
+        phrase = payload.get('phrase'),
+        section = payload.get('section', 'Breakingviews'),
+        months_ago = payload.get('months_ago')
     ).start_scraping()
     print(F"Status task: {result}")
