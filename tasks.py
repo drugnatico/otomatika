@@ -89,6 +89,18 @@ class Scraping():
         self.browser.maximize_window()
         self.wait = WebDriverWait(self.browser, self.time_wait)
 
+    def _save_source_code(self, filename: str = "source_code") -> None:
+        """
+        Save the source code of the current page to a file
+        Params
+        ----------
+        Optional
+            filename: Filename of the source code file
+        """
+        with open(path_join(self.output_dir, f"{filename}.html"),
+                    "w", encoding="utf-8") as tf:
+            tf.write(self.browser.page_source)
+
     def create_dir(self, path_file: str|list) -> str:
         """
         Create dir(s)
@@ -194,6 +206,7 @@ class Scraping():
             + f"- In function '{exc_info()[2].tb_frame.f_code.co_name}' " \
             + f"- No. Line: {exc_info()[2].tb_lineno} - " \
             + f"Error Type: {type(e).__name__} - Error Message: {e}"
+        self._save_source_code()
         self._finish_browser()
         print(self.error)
 
