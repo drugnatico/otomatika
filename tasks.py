@@ -694,8 +694,7 @@ class Scraping():
 def minimal_task():
     item = workitems.inputs.current
     print("Received payload:", item.payload)
-    payload = workitems.outputs.create(payload={"key": "value"})
-    print(type(payload))
+    payload = dict(workitems.outputs.create(payload={"key": "value"}))
     result = Scraping(
         phrase = payload.get('phrase'),
         section = payload.get('section', 'Breakingviews'),
