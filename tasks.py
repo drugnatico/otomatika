@@ -73,7 +73,7 @@ class Scraping():
         self.error = None
         options = webdriver.FirefoxOptions()
         options.accept_insecure_certs = True
-        options.add_argument('-headless')
+        #options.add_argument('-headless')
         options.set_preference(
             "browser.download.manager.showAlertOnComplete", False
         )
@@ -511,7 +511,9 @@ class Scraping():
                 EC.element_to_be_clickable(
                     (
                         By.XPATH,
-                        "//button[@data-testid='Button' and not(@aria-expanded='false')]"
+                        #"//button[@data-testid='Button' and not(@aria-expanded='false')]"
+                        "//button[@data-testid='Button' and not(@aria-expanded='false') " \
+                        + "and not(//div[@class='onetrust-pc-dark-filter ot-fade-in'])]"
                     )
                 ),
                 f"Not finded element to search phrase"
