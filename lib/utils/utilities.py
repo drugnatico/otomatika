@@ -24,7 +24,6 @@ def _create_dir(path_file: str|list) -> str:
         makedirs(file_path)
     return file_path
 
-#def _save_source_code(filename: str = "source_code", source_code: str, output_dir: str) -> None:
 def save_source_code(source_code: str, filename: str = "source_code") -> None:
     """
     Save the source code of the current page to a file
