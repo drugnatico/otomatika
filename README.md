@@ -11,7 +11,7 @@ When fails save the source code page ('source_code.html') to analyze and prevent
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "phares": {
+    "phrase": {
       "type": "string",
       "description": "Phrase to search"
     },
@@ -25,7 +25,7 @@ When fails save the source code page ('source_code.html') to analyze and prevent
       "minimum": 0
     }
   },
-  "required": ["phares", "months_ago"],
+  "required": ["phrase", "months_ago"],
   "additionalProperties": false
 }
 ```
@@ -33,7 +33,7 @@ When fails save the source code page ('source_code.html') to analyze and prevent
 ### Example
 ```
 {
-    "phares": "Joe Biden",
+    "phrase": "Joe Biden",
     "section": "Markets",
     "months_ago": 1
 }
