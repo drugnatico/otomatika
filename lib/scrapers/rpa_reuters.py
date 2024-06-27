@@ -188,7 +188,7 @@ class Scraping():
             + f"Error Type: {type(e).__name__} - Error Message: {e}"
         save_source_code(
             source_code = self.browser.page_source,
-            filename = self.output_dir
+            filename = path_join(self.output_dir, "source_code")
         )
         self._finish_browser()
         print(self.error)
